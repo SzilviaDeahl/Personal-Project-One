@@ -42,3 +42,6 @@ h1 {
   padding-bottom: 20px;
   background-color: lightyellow;
 }
+.signout {
+  float: right;
+}

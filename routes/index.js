@@ -26,31 +26,23 @@ router.post('/planner/signup', function(req, res, next){
   var pwdConf = req.body.pwdConf;
   var email = req.body.email;
   var errors = validator.passwordValidator(password, pwdConf, email, userCollection)
+  var errorArray = [];
   if (errors.length != 0){
     res.render('planner/signup', {errors: errors})
   } else {
     userCollection.findOne({email: req.body.email}, function(err, record) {
       if(record) {
-        res.render('planner/signin', { errors: "Email already exists" })
+        errorArray.push("Email already exists")
+        res.render('planner/signin', { errors: errorArray })
       } else {
         userCollection.insert({
              email: req.body.email,
              password: hash
            });
-          res.redirect('/planner/index');  
+          res.redirect('/planner/index');
       }
     })
   }
-  // // userCollection.findOne({email: req.body.email}, function(err, record){
-  // //   if (record){
-  // //     res.redirect('/planner/signin')
-  // //   }
-  //
-  //   else {
-  //     userCollection.insert({
-  //      email: req.body.email,
-  //      password: hash
-  //    });
 });
 
 router.get('/planner/signin', function(req, res, next){
@@ -60,18 +52,30 @@ router.get('/planner/signin', function(req, res, next){
 router.post('/planner/signin', function(req, res, next){
   var email =  req.body.email;
   var password = req.body.password;
-  var validation = validator.userValidator(password, email, userCollection);
-  userCollection.findOne({email: req.body.email}, function(err, record){
-    if (!record){
-      res.render('/planner/signup')
-    }
-  if(bcrypt.compareSync(password, record.password)){
-    res.redirect('/planner/index')
+  var errors = validator.userValidator(password, email, userCollection);
+  var errorArray = [];
+  if (errors.length != 0){
+    res.render('planner/signin', {errors: errors})
   } else {
-    res.render('/planner/signin', {validation: validation})
-  }
-  });
+    userCollection.findOne({email: req.body.email}, function(err, record){
+      if (!record){
+        errorArray.push("User doesn't exist")
+        res.render('planner/signup', {errors: errorArray })
+      }
+      else {
+        userCollection.findOne({email: req.body.email}, function(err, record){
+          if(bcrypt.compareSync(password, record.password)){
+            res.redirect('/planner/index');
+          } else {
+            errorArray.push("Password incorrect!")
+            res.render('planner/signin', { errors: errorArray })
+          }
+        })
+      }
+    })
+    }
 });
+
 
 router.get('/planner/signup', function(req, res, next){
   res.render('planner/signup', {validator: []})
