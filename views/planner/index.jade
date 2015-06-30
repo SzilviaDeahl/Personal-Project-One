@@ -2,6 +2,7 @@ extends ../layout
 
 block content
   h1 Let's get started!
+  p Hello #{currentUser}
   div.days
     div.col-1
       label(for='mon') Monday
@@ -33,4 +34,4 @@ block content
         a(href='/planner/days/sun') Go!
     
   div.signout
-    a(href='../../') Sign out    
+    a(href='/fake-logout') Sign out    

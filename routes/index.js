@@ -14,10 +14,9 @@ var key = (process.env.bigOven_API);
 router.get('/', function(req, res, next) {
   res.render('index', {validator: []});
 });
-// {validator: []}
 
 router.get('/planner/index', function(req,res,next){
-  res.render('planner/index')
+    res.render('planner/index')
 });
 
 router.post('/planner/signup', function(req, res, next){
@@ -39,6 +38,7 @@ router.post('/planner/signup', function(req, res, next){
              email: req.body.email,
              password: hash
            });
+          res.cookie('currentUser', req.body.email)
           res.redirect('/planner/index');
       }
     })
@@ -65,6 +65,7 @@ router.post('/planner/signin', function(req, res, next){
       else {
         userCollection.findOne({email: req.body.email}, function(err, record){
           if(bcrypt.compareSync(password, record.password)){
+            res.cookie('currentUser', req.body.email)
             res.redirect('/planner/index');
           } else {
             errorArray.push("Password incorrect!")
@@ -101,6 +102,11 @@ router.get('/planner/days/sat', function(req, res, next){
 });
 router.get('/planner/days/sun', function(req, res, next){
   res.render('planner/days/sun')
+});
+
+router.get('/fake-logout', function(req, res, next){
+  res.clearCookie('currentUser')
+  res.redirect('../../');
 });
 
 

@@ -45,3 +45,14 @@ h1 {
 .signout {
   float: right;
 }
+/*background image for lets get started*/
+.days {
+  background-image: url('https://hmcportfolio.files.wordpress.com/2011/12/goodcookingdesigncrop.gif');
+}
+
+/*background image for home page*/
+.home {
+  url('http://wearandcheer.com/wp-content/uploads/2014/02/Food-Background-Wallpaer-wearandcheer.com_.jpg')
+  url('http://www.mazola.com/img/page-background.png')
+  url('http://katscookingcourse.weebly.com/uploads/3/7/1/1/37111077/5196406_orig.jpg')
+}
