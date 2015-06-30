@@ -16,9 +16,7 @@ router.get('/', function(req, res, next) {
 });
 // {validator: []}
 
-router.get('/planner/index', function(req,res,next){
-  res.render('planner/index')
-});
+
 
 router.post('/planner/signup', function(req, res, next){
   var hash = bcrypt.hashSync(req.body.password, 10);
@@ -37,20 +35,10 @@ router.post('/planner/signup', function(req, res, next){
              email: req.body.email,
              password: hash
            });
-          res.redirect('/planner/index');  
+          res.redirect('/planner/index');
       }
     })
   }
-  // // userCollection.findOne({email: req.body.email}, function(err, record){
-  // //   if (record){
-  // //     res.redirect('/planner/signin')
-  // //   }
-  //
-  //   else {
-  //     userCollection.insert({
-  //      email: req.body.email,
-  //      password: hash
-  //    });
 });
 
 router.get('/planner/signin', function(req, res, next){
@@ -78,8 +66,23 @@ router.get('/planner/signup', function(req, res, next){
 });
 
 router.get('/planner/days/mon', function(req, res, next){
+  var keyword = req.body.search;
+  unirest.get('http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw='
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header('X-TrackerToken', process.env.bigOven_API)
+    .end(function (response) {
+      res.render('planner/days', { response: response.body });
+      console.log(response.body);
+      console.log('***********************************');
+      console.log('****************************************');
+    });
   res.render('planner/days/mon')
 });
+
+router.post('/planner/days/mon', function(req, res, next){
+  res.render('planner/days/mon')
+});
+
 router.get('/planner/days/tues', function(req, res, next){
   res.render('planner/days/tues')
 });
@@ -98,6 +101,17 @@ router.get('/planner/days/sat', function(req, res, next){
 router.get('/planner/days/sun', function(req, res, next){
   res.render('planner/days/sun')
 });
+
+// router.get('/', function(req, res, next){
+//   var keyword = req.body.search;
+//   unirest.get('http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw='
+//     + keyword + "&api_key=" + key)
+//     .header('X-TrackerToken', process.env.bigOven_API)
+//     .end(function (response) {
+//       res.render('planner/days', { response: response.body });
+//       console.log(response.body);
+//     });
+// })
 
 
 module.exports = router;

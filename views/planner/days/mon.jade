@@ -2,6 +2,7 @@ extends ../../layout
 
 block content
   h1 Monday's Dinner
-  p.ingr Enter ingredient: 
-    input(id='search' type='search' name='search' placeholder='Search...') 
-    input(class='search' type='submit' value='search' )
+  form(action='/planner/days/mon' method='post')
+    p.ingr Enter ingredient: 
+      input(id='search' type='text' name='search' placeholder='Search...') 
+      input(class='search' type='submit' value='search' )
