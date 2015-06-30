@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+require('dotenv').load()
 var app = express();
 
 // view engine setup

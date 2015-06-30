@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+
+  div.oldUser
+    h2 Welcome Back! Enter Password to Sign In!
+    if validation   
+      for err in validation
+        p.err
+          = err
+    form(action='/planner/signin' method='post')
+      p
+        label(for='email') Email
+      p
+        input(id='email' type='email' name='email' placeholder='enter you email here' autofocus)
+      p
+        label(for='password') Password
+      p
+        input(id='password' type='password' name='password' placeholder='enter password')  
+      p
+        input(id='checkbox' type='checkbox' name='checkbox')
+        label(for='checkbox') Remember me 
+      p
+        input(type='submit' value='Sign In')

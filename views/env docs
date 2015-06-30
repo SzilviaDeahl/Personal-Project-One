@@ -1,0 +1,49 @@
+in app: require('dotenv').load()
+
+in gitignore, add .env
+
+in command line : nmp install dotenv --save
+
+in the atom folder for web, create .env file, save the API key in there
+ i.e: ny_times = bkdfsagg32ggwfgygyu
+
+in the index file add: process.env. whatever the code
+
+ API setup
+
+    √register on api site to get a keyword
+    √go and read the api docs
+    √install unirest -
+    √require unirest through your routes:
+      var unirest = require('unirest') -experiment and make sure api works
+    removed our key :
+      √  install dotenv in command line
+      √  create .env file
+      √  add .env to gitignore: echo .env > .gitignore
+      √  add require to app.js
+      √  add values to env
+      √  reference the key in route with process.env:
+          var key = (process.env.whatever_KEY)
+        √restart your server
+
+  parse and display data
+
+
+randomize names:
+  var randomIndex;
+  var max = names.length -this is needed so the for loop will not stop sooner than it should because with splice we remove names already used and that shortens the length of the array
+  for (i=0; i<max, i++){
+    randomIndex = Math.floor(Math.random()*names.length)
+    var developer = names[randomIndex];
+    names.splice(randomIndex, 1)
+
+  randomIndex = Math.floor(Math.random() *names.length)
+  var manager = managers[randomIndex]
+
+    if(magager === developer) throw 'Please run again'
+
+  managers.splice(randomIndex, 1);
+} consol.log('- ' + manages + )
+
+
+api_key_for_project=dvx70Lw0414QF05tDphpT9jq9dgU22Fr
