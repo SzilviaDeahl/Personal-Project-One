@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('http://i.stack.imgur.com/jGlzr.png');
 }
 
 .days {
@@ -9,11 +10,6 @@ body {
 
 a {
   color: #00B7FF;
-}
-
-.requirements{
-  font-size: 8px;
-  color: red;
 }
 
 h1 {
@@ -45,14 +41,27 @@ h1 {
 .signout {
   float: right;
 }
-/*background image for lets get started*/
-.days {
-  background-image: url('https://hmcportfolio.files.wordpress.com/2011/12/goodcookingdesigncrop.gif');
+
+.resize {
+  width: 50px;
+  height: 50px;
 }
 
+.table {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  margin: 20px;
+  display: block;
+}
+/*background image for lets get started*/
+/*.days {
+  background-image: url('https://hmcportfolio.files.wordpress.com/2011/12/goodcookingdesigncrop.gif');
+}*/
+
 /*background image for home page*/
-.home {
+/*.home {
   url('http://wearandcheer.com/wp-content/uploads/2014/02/Food-Background-Wallpaer-wearandcheer.com_.jpg')
   url('http://www.mazola.com/img/page-background.png')
   url('http://katscookingcourse.weebly.com/uploads/3/7/1/1/37111077/5196406_orig.jpg')
-}
+}*/

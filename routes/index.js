@@ -16,7 +16,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/planner/index', function(req,res,next){
-    res.render('planner/index')
+  var keyword = req.body.search;
+  unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header('X-TrackerToken', process.env.bigOven_API)
+    .end(function(response){
+    res.render('planner/index', {response: res.body})
+  });
 });
 
 router.post('/planner/signup', function(req, res, next){
@@ -85,23 +91,121 @@ router.get('/planner/signup', function(req, res, next){
 router.get('/planner/days/mon', function(req, res, next){
   res.render('planner/days/mon')
 });
+
+router.post('/planner/days/mon', function(req, res, next){
+  var keyword = req.body.search;
+  var results = [];
+  unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
+    .end(function(response){
+      console.log(response.body);
+      // console.log(response.body.Results[0].Title);
+      // console.log(response.body.Results[0].WebURL);
+    res.render('planner/days/mon', response.body)
+  });
+});
+
 router.get('/planner/days/tues', function(req, res, next){
   res.render('planner/days/tues')
 });
+router.post('/planner/days/tues', function(req, res, next){
+  var keyword = req.body.search;
+  var results = [];
+  unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
+    .end(function(response){
+      console.log(response.body);
+      // console.log(response.body.Results[0].Title);
+      // console.log(response.body.Results[0].WebURL);
+    res.render('planner/days/tues', response.body)
+  });
+});
+
 router.get('/planner/days/wedns', function(req, res, next){
   res.render('planner/days/wedns')
 });
+router.post('/planner/days/wedns', function(req, res, next){
+  var keyword = req.body.search;
+  var results = [];
+  unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
+    .end(function(response){
+      console.log(response.body);
+      // console.log(response.body.Results[0].Title);
+      // console.log(response.body.Results[0].WebURL);
+    res.render('planner/days/wedns', response.body)
+  });
+});
+
 router.get('/planner/days/thurs', function(req, res, next){
   res.render('planner/days/thurs')
 });
+router.post('/planner/days/thurs', function(req, res, next){
+  var keyword = req.body.search;
+  var results = [];
+  unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
+    .end(function(response){
+      console.log(response.body);
+      // console.log(response.body.Results[0].Title);
+      // console.log(response.body.Results[0].WebURL);
+    res.render('planner/days/thurs', response.body)
+  });
+});
+
 router.get('/planner/days/fri', function(req, res, next){
   res.render('planner/days/fri')
 });
+router.post('/planner/days/fri', function(req, res, next){
+  var keyword = req.body.search;
+  var results = [];
+  unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
+    .end(function(response){
+      console.log(response.body);
+      // console.log(response.body.Results[0].Title);
+      // console.log(response.body.Results[0].WebURL);
+    res.render('planner/days/fri', response.body)
+  });
+});
+
 router.get('/planner/days/sat', function(req, res, next){
   res.render('planner/days/sat')
 });
+router.post('/planner/days/sat', function(req, res, next){
+  var keyword = req.body.search;
+  var results = [];
+  unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
+    .end(function(response){
+      console.log(response.body);
+      // console.log(response.body.Results[0].Title);
+      // console.log(response.body.Results[0].WebURL);
+    res.render('planner/days/sat', response.body)
+  });
+});
+
 router.get('/planner/days/sun', function(req, res, next){
   res.render('planner/days/sun')
+});
+router.post('/planner/days/sun', function(req, res, next){
+  var keyword = req.body.search;
+  var results = [];
+  unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
+    .end(function(response){
+      console.log(response.body);
+      // console.log(response.body.Results[0].Title);
+      // console.log(response.body.Results[0].WebURL);
+    res.render('planner/days/sun', response.body)
+  });
 });
 
 router.get('/fake-logout', function(req, res, next){
@@ -109,5 +213,12 @@ router.get('/fake-logout', function(req, res, next){
   res.redirect('../../');
 });
 
+router.get('/planner/saved', function(req, res, next){
+  res.render('planner/saved');
+});
+
+router.get('/planner/weeklyplan', function(req, res, next){
+  res.render('planner/weeklyplan')
+});
 
 module.exports = router;
