@@ -1,8 +1,7 @@
 extends ../layout
 
 block content
-  h1 Let's get started!
-  p Hello #{currentUser}
+  h1 Weekly Plan
   div.days
     div.col-1
       label(for='mon') Monday
@@ -35,8 +34,3 @@ block content
     div.save
       p
         a(href='/planner/saved') My Saved recipes
-    div.plan
-      p
-        a(href='/planner/weeklyplan') Go To My Weekly Plan
-  div.signout
-    a(href='/fake-logout') Sign out    

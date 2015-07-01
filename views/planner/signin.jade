@@ -4,10 +4,10 @@ block content
 
   div.oldUser
     h2 Welcome Back! Enter Password to Sign In!
-    if validation   
-      for err in validation
+    if errors   
+      for err in errors
         p.err
-          = err
+          = err      
     form(action='/planner/signin' method='post')
       p
         label(for='email') Email

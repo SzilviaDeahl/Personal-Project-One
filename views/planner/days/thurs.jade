@@ -2,6 +2,25 @@ extends ../../layout
 
 block content
   h1 Thursday's Dinner
-  p.ingr Enter ingredient: 
-    input(id='search' type='search' name='search' placeholder='Search...') 
-    input(class='search' type='submit' value='search' )
+  form(action='/planner/days/thurs' method='post')
+    p.ingr Enter ingredient: 
+      input(id='search' type='search' name='search' placeholder='Search...' autofocus) 
+      input(class='search' type='submit' value='search' )
+    div.table  
+      table
+        thead
+          tr
+            th Name
+            th Image
+            th Rating
+        tbody
+          if Results
+            each entry in Results
+              tr
+                td
+                  a(href='#{entry.WebURL}')= entry.Title
+                td
+                  img.resize(src='#{entry.ImageURL}')
+                td= entry.StarRating.toFixed(1)
+    p.next
+      a(href='/planner/days/fri') Go To Next Day!

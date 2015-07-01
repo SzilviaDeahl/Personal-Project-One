@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1 My Saved Recipes
+  table 
+    thead
+      tr
+        th Name
+        th Photo
+        th Rating
+  tbody
+    if Results
+      each entry in Results
+        tr
+          td
+            a(href='#{entry.WebURL}')= entry.Title
+          td
+            img.resize(src='#{entry.ImageURL}')
+          td= entry.StarRating.toFixed(1)
