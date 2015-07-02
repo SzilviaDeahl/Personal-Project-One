@@ -13,6 +13,7 @@ block content
             th Name
             th Image
             th Rating
+            th Save
         tbody
           if Results
             each entry in Results
@@ -22,5 +23,9 @@ block content
                 td
                   img.resize(src='#{entry.ImageURL}')
                 td= entry.StarRating.toFixed(1)
+                td
+                  a(href='/planner/days/thurs/add?recipe_id=#{entry.RecipeID}&image=#{entry.ImageURL}&title=#{entry.Title}&url=#{entry.WebURL}') Save
+    p.back
+      a(href='/planner/index') Home
     p.next
       a(href='/planner/days/fri') Go To Next Day!

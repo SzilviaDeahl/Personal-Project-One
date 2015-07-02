@@ -17,11 +17,12 @@ router.get('/', function(req, res, next) {
 
 router.get('/planner/index', function(req,res,next){
   var keyword = req.body.search;
+  var userName = req.cookies.currentUser;
   unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
     + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
     .header('X-TrackerToken', process.env.bigOven_API)
     .end(function(response){
-    res.render('planner/index', {response: res.body})
+    res.render('planner/index', {response: res.body, currentUser: userName})
   });
 });
 
@@ -89,16 +90,6 @@ router.get('/planner/signup', function(req, res, next){
 });
 
 router.get('/planner/days/mon', function(req, res, next){
-  var keyword = req.body.search;
-  unirest.get('http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw='
-    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
-    .header('X-TrackerToken', process.env.bigOven_API)
-    .end(function (response) {
-      res.render('planner/days', { response: response.body });
-      console.log(response.body);
-      console.log('***********************************');
-      console.log('****************************************');
-    });
   res.render('planner/days/mon')
 });
 
@@ -126,9 +117,6 @@ router.post('/planner/days/tues', function(req, res, next){
     + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
     .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
     .end(function(response){
-      console.log(response.body);
-      // console.log(response.body.Results[0].Title);
-      // console.log(response.body.Results[0].WebURL);
     res.render('planner/days/tues', response.body)
   });
 });
@@ -143,9 +131,6 @@ router.post('/planner/days/wedns', function(req, res, next){
     + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
     .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
     .end(function(response){
-      console.log(response.body);
-      // console.log(response.body.Results[0].Title);
-      // console.log(response.body.Results[0].WebURL);
     res.render('planner/days/wedns', response.body)
   });
 });
@@ -160,9 +145,6 @@ router.post('/planner/days/thurs', function(req, res, next){
     + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
     .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
     .end(function(response){
-      console.log(response.body);
-      // console.log(response.body.Results[0].Title);
-      // console.log(response.body.Results[0].WebURL);
     res.render('planner/days/thurs', response.body)
   });
 });
@@ -177,9 +159,6 @@ router.post('/planner/days/fri', function(req, res, next){
     + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
     .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
     .end(function(response){
-      console.log(response.body);
-      // console.log(response.body.Results[0].Title);
-      // console.log(response.body.Results[0].WebURL);
     res.render('planner/days/fri', response.body)
   });
 });
@@ -194,9 +173,6 @@ router.post('/planner/days/sat', function(req, res, next){
     + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
     .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
     .end(function(response){
-      console.log(response.body);
-      // console.log(response.body.Results[0].Title);
-      // console.log(response.body.Results[0].WebURL);
     res.render('planner/days/sat', response.body)
   });
 });
@@ -211,9 +187,6 @@ router.post('/planner/days/sun', function(req, res, next){
     + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
     .header({'X-TrackerToken': process.env.bigOven_API, 'Accept': 'application/json'})
     .end(function(response){
-      console.log(response.body);
-      // console.log(response.body.Results[0].Title);
-      // console.log(response.body.Results[0].WebURL);
     res.render('planner/days/sun', response.body)
   });
 });
@@ -224,11 +197,90 @@ router.get('/fake-logout', function(req, res, next){
 });
 
 router.get('/planner/saved', function(req, res, next){
-  res.render('planner/saved');
+  userCollection.findOne({email: req.cookies.currentUser}, function (err, record) {
+  res.render('planner/saved', { user: record });
+});
+});
+
+// router.get('/planner/days/mon/add', function (req, res){
+//   res.render('planner/weeklyplan')
+// });
+
+router.get('/planner/days/mon/add', function (req, res) {
+  var mealInfo = {
+      name: req.query.title,
+      recipeId: req.query.recipe_id,
+      imageUrl: req.query.image,
+      WebURL: req.query.url
+  }
+  userCollection.update({email: req.cookies.currentUser}, {$set: {mon: mealInfo}})
+  res.redirect('/planner/weeklyplan')
+});
+router.get('/planner/days/tues/add', function (req, res) {
+  var mealInfo = {
+      name: req.query.title,
+      recipeId: req.query.recipe_id,
+      imageUrl: req.query.image,
+      WebURL: req.query.url
+  }
+  userCollection.update({email: req.cookies.currentUser}, {$set: {tues: mealInfo}})
+  res.redirect('/planner/weeklyplan')
+});
+router.get('/planner/days/wedns/add', function (req, res) {
+  var mealInfo = {
+      name: req.query.title,
+      recipeId: req.query.recipe_id,
+      imageUrl: req.query.image,
+      WebURL: req.query.url
+  }
+  userCollection.update({email: req.cookies.currentUser}, {$set: {wedns: mealInfo}})
+  res.redirect('/planner/weeklyplan')
+});
+router.get('/planner/days/thurs/add', function (req, res) {
+  var mealInfo = {
+      name: req.query.title,
+      recipeId: req.query.recipe_id,
+      imageUrl: req.query.image,
+      WebURL: req.query.url
+  }
+  userCollection.update({email: req.cookies.currentUser}, {$set: {thurs: mealInfo}})
+  res.redirect('/planner/weeklyplan')
+});
+router.get('/planner/days/fri/add', function (req, res) {
+  var mealInfo = {
+      name: req.query.title,
+      recipeId: req.query.recipe_id,
+      imageUrl: req.query.image,
+      WebURL: req.query.url
+  }
+  userCollection.update({email: req.cookies.currentUser}, {$set: {fri: mealInfo}})
+  res.redirect('/planner/weeklyplan')
+});
+router.get('/planner/days/sat/add', function (req, res) {
+  var mealInfo = {
+      name: req.query.title,
+      recipeId: req.query.recipe_id,
+      imageUrl: req.query.image,
+      WebURL: req.query.url
+  }
+  userCollection.update({email: req.cookies.currentUser}, {$set: {sat: mealInfo}})
+  res.redirect('/planner/weeklyplan')
+});
+router.get('/planner/days/sun/add', function (req, res) {
+  var mealInfo = {
+      name: req.query.title,
+      recipeId: req.query.recipe_id,
+      imageUrl: req.query.image,
+      WebURL: req.query.url
+  }
+  userCollection.update({email: req.cookies.currentUser}, {$set: {sun: mealInfo}})
+  res.redirect('/planner/weeklyplan')
 });
 
 router.get('/planner/weeklyplan', function(req, res, next){
-  res.render('planner/weeklyplan')
+  userCollection.findOne({email: req.cookies.currentUser}, function (err, record) {
+    console.log(record);
+  res.render('planner/weeklyplan', { user: record })
+  })
 });
-
 module.exports = router;

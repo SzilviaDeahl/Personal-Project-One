@@ -4,12 +4,11 @@ block content
   h1 Monday's Dinner
   form(action='/planner/days/mon' method='post')
     p.ingr Enter ingredient: 
-<<<<<<< HEAD
-      input(id='search' type='text' name='search' placeholder='Search...') 
-      input(class='search' type='submit' value='search' )
-=======
       input(id='search' type='search' name='search' placeholder='Search...' autofocus) 
       input(class='search' type='submit' value='search' )
+    p
+      label(for='eatingOut') Eating out/Delivery   
+      input(id='eatingOut' type='submit' name='eatingOut' value='yes')
     div.table  
       table
         thead
@@ -17,15 +16,20 @@ block content
             th Name
             th Image
             th Rating
+            th Save
         tbody
           if Results
             each entry in Results
               tr
                 td
+                  //- = JSON.stringify(entry)
                   a(href='#{entry.WebURL}')= entry.Title
                 td
                   img.resize(src='#{entry.ImageURL}')
                 td= entry.StarRating.toFixed(1)
+                td
+                  a(href='/planner/days/mon/add?recipe_id=#{entry.RecipeID}&image=#{entry.ImageURL}&title=#{entry.Title}&url=#{entry.WebURL}') Save
+    p.back
+      a(href='/planner/index') Home
     p.next
       a(href='/planner/days/tues') Go To Next Day!
->>>>>>> search

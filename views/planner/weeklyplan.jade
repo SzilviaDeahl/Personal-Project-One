@@ -5,32 +5,39 @@ block content
   div.days
     div.col-1
       label(for='mon') Monday
-      p  
-        a(href='/planner/days/mon') Go!
+      if user.mon
+        p= user.mon.name 
+        a(href=user.mon.WebURL) Go to Recipe! 
     div.col-1  
       label(for='tues') Tuesday
-      p
-        a(href='/planner/days/tues') Go!
+      if user.tues
+        p= user.tues.name 
+        a(href=user.tues.WebURL) Go to Recipe!
     div.col-1  
       label(for='wedns') Wednesday
-      p
-        a(href='/planner/days/wedns') Go!
+      if user.wedns
+        p= user.wedns.name 
+        a(href=user.wedns.WebURL) Go to Recipe!
     div.col-1  
       label(for='thurs') Thursday
-      p
-        a(href='/planner/days/thurs') Go!
+      if user.thurs
+        p= user.thurs.name 
+        a(href=user.thurs.WebURL) Go to Recipe!
     div.col-1  
       label(for='fri') Friday
-      p
-        a(href='/planner/days/fri') Go!
+      if user.fri
+        p= user.fri.name 
+        a(href=user.fri.WebURL) Go to Recipe!
     div.col-1  
       label(for='sat') Saturday
-      p
-        a(href='/planner/days/sat') Go!
+      if user.sat
+        p= user.sat.name 
+        a(href=user.sat.WebURL) Go to Recipe!
     div.col-1  
       label(for='sun') Sunday
-      p
-        a(href='/planner/days/sun') Go!
+      if user.sun
+        p= user.sun.name 
+        a(href=user.sun.WebURL) Go to Recipe!
     div.save
       p
         a(href='/planner/saved') My Saved recipes
