@@ -4,22 +4,25 @@ block content
 
   div.newUser 
     h2 New Users Sign Up To Plan Ahead!
-    if errors   
-      for err in errors
-        p.err
-          = err
-    form(action='/planner/signup' method='post')
-      p
-        label(for='email') Email
-      p
-        input(id='email' type='email' name='email' placeholder='enter you email here' autofocus)
-      p
-        label(for='password') Password 
-      p
-        input(id='password' type='password' name='password' placeholder='enter password')  
-      p
-        label(for='pwdConf') Confirm Password
-      p
-        input(id='pwdConf' type='password' name='pwdConf' placeholder='re-enter password') 
-      p
-        input(id='signup' type='submit' value='Sign Up')          
+    div.signup
+      if errors   
+        for err in errors
+          p.err
+            = err
+      form(action='/planner/signup' method='post')
+        p
+          label(for='email') Email
+        p
+          input(id='email' type='email' name='email' placeholder='enter you email here' autofocus)
+        p
+          label(for='password') Password 
+        p
+          input(id='password' type='password' name='password' placeholder='enter password')  
+        p
+          label(for='pwdConf') Confirm Password
+        p
+          input(id='pwdConf' type='password' name='pwdConf' placeholder='re-enter password') 
+        p
+          input(id='signup' type='submit' value='Sign Up') 
+    div.footer 
+      a(href='/') Home

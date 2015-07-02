@@ -1,26 +1,38 @@
 extends ../layout
 
 block content
-  h1 My Saved Recipes
+  div.saved
+    h1 My Saved Recipes
+    p
+      if user.mon
+        p
+          a(href=user.mon.WebURL)= user.mon.name
+    p  
+      if user.tues
+        p
+          a(href=user.tues.WebURL)= user.tues.name      
+    p  
+      if user.wedns
+        p
+          a(href=user.wedns.WebURL)= user.wedns.name    
+    p  
+      if user.thurs
+        p
+          a(href=user.thurs.WebURL)= user.thurs.name    
+    p  
+      if user.fri
+        p
+          a(href=user.fri.WebURL)= user.fri.name    
+    p  
+      if user.sat
+        p
+          a(href=user.sat.WebURL)= user.sat.name    
+    p  
+      if user.sun
+        p
+          a(href=user.sun.WebURL)= user.sun.name 
   p
-    if user.mon
-      p= user.mon.name
-  p  
-    if user.tues
-      p= user.tues.name    
-  p  
-    if user.wedns
-      p= user.wedns.name    
-  p  
-    if user.thurs
-      p= user.thurs.name    
-  p  
-    if user.fri
-      p= user.fri.name    
-  p  
-    if user.sat
-      p= user.sat.name    
-  p  
-    if user.sun
-      p= user.sun.name    
-        
+    a(href='/planner/index') Home 
+  div.signout
+    a(href='/fake-logout') Sign out
+          

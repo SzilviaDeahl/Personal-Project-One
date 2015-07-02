@@ -6,10 +6,10 @@ passwordValidator: function(password, pwdConf, email){
       pwdArray.push('Passwords don\'t match!')
     }
     if (password.length<8){
-      pwdArray.push('Password should be at least 8 characters long')
+      pwdArray.push('Password should be at least 8 characters long!')
     }
     if (email.trim() === ""){
-      pwdArray.push('Email cannot be blank')
+      pwdArray.push('Email cannot be blank!')
     }
     return pwdArray;
   },
@@ -20,10 +20,10 @@ userValidator: function (password, email, userCollection){
       userArray.push('Email cannot be blank!')
     }
     if (password.trim() === ""){
-      userArray.push('Password cannot be blank')
+      userArray.push('Password cannot be blank!')
     }
     if (password.length<8){
-      userArray.push('Password too short')
+      userArray.push('Password should be at least 8 characters long!')
     }
     return userArray;
   }

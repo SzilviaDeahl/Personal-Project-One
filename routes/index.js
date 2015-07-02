@@ -206,17 +206,17 @@ router.get('/planner/saved', function(req, res, next){
 //   res.render('planner/weeklyplan')
 // });
 
-router.get('/planner/days/mon/add', function (req, res) {
+router.get('/planner/days/mon/add', function (req, res, next) {
   var mealInfo = {
       name: req.query.title,
       recipeId: req.query.recipe_id,
       imageUrl: req.query.image,
       WebURL: req.query.url
   }
-  userCollection.update({email: req.cookies.currentUser}, {$set: {mon: mealInfo}})
-  res.redirect('/planner/weeklyplan')
+    userCollection.update({email: req.cookies.currentUser}, {$set: {mon: mealInfo}})
+    res.redirect('/planner/weeklyplan')
 });
-router.get('/planner/days/tues/add', function (req, res) {
+router.get('/planner/days/tues/add', function (req, res, next) {
   var mealInfo = {
       name: req.query.title,
       recipeId: req.query.recipe_id,
@@ -226,7 +226,7 @@ router.get('/planner/days/tues/add', function (req, res) {
   userCollection.update({email: req.cookies.currentUser}, {$set: {tues: mealInfo}})
   res.redirect('/planner/weeklyplan')
 });
-router.get('/planner/days/wedns/add', function (req, res) {
+router.get('/planner/days/wedns/add', function (req, res, next) {
   var mealInfo = {
       name: req.query.title,
       recipeId: req.query.recipe_id,
@@ -236,7 +236,7 @@ router.get('/planner/days/wedns/add', function (req, res) {
   userCollection.update({email: req.cookies.currentUser}, {$set: {wedns: mealInfo}})
   res.redirect('/planner/weeklyplan')
 });
-router.get('/planner/days/thurs/add', function (req, res) {
+router.get('/planner/days/thurs/add', function (req, res, next) {
   var mealInfo = {
       name: req.query.title,
       recipeId: req.query.recipe_id,
@@ -246,7 +246,7 @@ router.get('/planner/days/thurs/add', function (req, res) {
   userCollection.update({email: req.cookies.currentUser}, {$set: {thurs: mealInfo}})
   res.redirect('/planner/weeklyplan')
 });
-router.get('/planner/days/fri/add', function (req, res) {
+router.get('/planner/days/fri/add', function (req, res, next) {
   var mealInfo = {
       name: req.query.title,
       recipeId: req.query.recipe_id,
@@ -256,7 +256,7 @@ router.get('/planner/days/fri/add', function (req, res) {
   userCollection.update({email: req.cookies.currentUser}, {$set: {fri: mealInfo}})
   res.redirect('/planner/weeklyplan')
 });
-router.get('/planner/days/sat/add', function (req, res) {
+router.get('/planner/days/sat/add', function (req, res, next) {
   var mealInfo = {
       name: req.query.title,
       recipeId: req.query.recipe_id,
@@ -266,7 +266,7 @@ router.get('/planner/days/sat/add', function (req, res) {
   userCollection.update({email: req.cookies.currentUser}, {$set: {sat: mealInfo}})
   res.redirect('/planner/weeklyplan')
 });
-router.get('/planner/days/sun/add', function (req, res) {
+router.get('/planner/days/sun/add', function (req, res, next) {
   var mealInfo = {
       name: req.query.title,
       recipeId: req.query.recipe_id,

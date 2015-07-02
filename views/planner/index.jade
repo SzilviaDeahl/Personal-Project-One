@@ -1,42 +1,43 @@
 extends ../layout
 
 block content
-  h1 Let's get started!
-  p Hello #{currentUser}
-  div.days
-    div.col-1
-      label(for='mon') Monday
-      p  
-        a(href='/planner/days/mon') Go!
-    div.col-1  
-      label(for='tues') Tuesday
-      p
-        a(href='/planner/days/tues') Go!
-    div.col-1  
-      label(for='wedns') Wednesday
-      p
-        a(href='/planner/days/wedns') Go!
-    div.col-1  
-      label(for='thurs') Thursday
-      p
-        a(href='/planner/days/thurs') Go!
-    div.col-1  
-      label(for='fri') Friday
-      p
-        a(href='/planner/days/fri') Go!
-    div.col-1  
-      label(for='sat') Saturday
-      p
-        a(href='/planner/days/sat') Go!
-    div.col-1  
-      label(for='sun') Sunday
-      p
-        a(href='/planner/days/sun') Go!
-    div.save
-      p
-        a(href='/planner/saved') My Saved recipes
-    div.plan
-      p
-        a(href='/planner/weeklyplan') Go To My Weekly Plan
-  div.signout
-    a(href='/fake-logout') Sign out    
+  div.index
+    h1 Let's get started!
+    p.user Hello #{currentUser}
+    div.days
+      div.col-1
+        label(for='mon') Monday
+        p  
+          a(href='/planner/days/mon') Go!
+      div.col-1  
+        label(for='tues') Tuesday
+        p
+          a(href='/planner/days/tues') Go!
+      div.col-1  
+        label(for='wedns') Wednesday
+        p
+          a(href='/planner/days/wedns') Go!
+      div.col-1  
+        label(for='thurs') Thursday
+        p
+          a(href='/planner/days/thurs') Go!
+      div.col-1  
+        label(for='fri') Friday
+        p
+          a(href='/planner/days/fri') Go!
+      div.col-1  
+        label(for='sat') Saturday
+        p
+          a(href='/planner/days/sat') Go!
+      div.col-1  
+        label(for='sun') Sunday
+        p
+          a(href='/planner/days/sun') Go!
+      div.save
+        p
+          a(href='/planner/saved') My Saved recipes
+      div.plan
+        p.aweek
+          a(href='/planner/weeklyplan') Go To My Weekly Plan
+    div.signout
+      a(href='/fake-logout') Sign out    

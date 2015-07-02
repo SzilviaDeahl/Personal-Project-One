@@ -7,37 +7,53 @@ block content
       label(for='mon') Monday
       if user.mon
         p= user.mon.name 
-        a(href=user.mon.WebURL) Go to Recipe! 
+        a(href=user.mon.WebURL) Go to Recipe!
+      else
+        p Eating Out  
     div.col-1  
       label(for='tues') Tuesday
       if user.tues
         p= user.tues.name 
         a(href=user.tues.WebURL) Go to Recipe!
+      else
+        p Eating Out
     div.col-1  
       label(for='wedns') Wednesday
       if user.wedns
         p= user.wedns.name 
         a(href=user.wedns.WebURL) Go to Recipe!
+      else
+        p Eating Out
     div.col-1  
       label(for='thurs') Thursday
       if user.thurs
         p= user.thurs.name 
         a(href=user.thurs.WebURL) Go to Recipe!
+      else
+        p Eating Out
     div.col-1  
       label(for='fri') Friday
       if user.fri
         p= user.fri.name 
         a(href=user.fri.WebURL) Go to Recipe!
+      else
+        p Eating Out  
     div.col-1  
       label(for='sat') Saturday
       if user.sat
         p= user.sat.name 
         a(href=user.sat.WebURL) Go to Recipe!
+      else
+        p Eating Out  
     div.col-1  
       label(for='sun') Sunday
       if user.sun
         p= user.sun.name 
         a(href=user.sun.WebURL) Go to Recipe!
+      else
+        p Eating Out  
     div.save
       p
         a(href='/planner/saved') My Saved recipes
+    div.signout
+      a(href='/fake-logout') Sign out    
