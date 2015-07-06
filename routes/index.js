@@ -19,7 +19,7 @@ router.get('/planner/index', function(req,res,next){
   var keyword = req.body.search;
   var userName = req.cookies.currentUser;
   unirest.get("http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
-    + keyword + "&api_key=" + 'dvx70Lw0414QF05tDphpT9jq9dgU22Fr')
+    + keyword + "&api_key=" + process.env.bigOven_API)
     .header('X-TrackerToken', process.env.bigOven_API)
     .end(function(response){
     res.render('planner/index', {response: res.body, currentUser: userName})
