@@ -1,59 +1,88 @@
 extends ../layout
 
 block content
-  h1 Weekly Plan
+  h1 Weekly Dinner Plan
   div.days
     div.col-1
       label(for='mon') Monday
-      if user.mon
+      if (user.mon.name != null)
         p= user.mon.name 
         a(href=user.mon.WebURL) Go to Recipe!
       else
-        p Eating Out  
+        p Eating Out 
+      p
+        a(href='/planner/days/mon') Change
     div.col-1  
       label(for='tues') Tuesday
-      if user.tues
+      if (user.tues.name != null)
         p= user.tues.name 
         a(href=user.tues.WebURL) Go to Recipe!
       else
         p Eating Out
+      p
+        a(href='/planner/days/tues') Change
     div.col-1  
       label(for='wedns') Wednesday
-      if user.wedns
+      if (user.wedns.name != null)
         p= user.wedns.name 
         a(href=user.wedns.WebURL) Go to Recipe!
       else
         p Eating Out
+      p
+        a(href='/planner/days/wedns') Change
     div.col-1  
       label(for='thurs') Thursday
-      if user.thurs
+      if (user.thurs.name != null)
         p= user.thurs.name 
         a(href=user.thurs.WebURL) Go to Recipe!
       else
         p Eating Out
+      p
+        a(href='/planner/days/thurs') Change  
     div.col-1  
       label(for='fri') Friday
-      if user.fri
+      if (user.fri.name != null)
         p= user.fri.name 
         a(href=user.fri.WebURL) Go to Recipe!
       else
-        p Eating Out  
+        p Eating Out
+      p
+        a(href='/planner/days/fri') Change
     div.col-1  
       label(for='sat') Saturday
-      if user.sat
+      if (user.sat.name != null)
         p= user.sat.name 
         a(href=user.sat.WebURL) Go to Recipe!
       else
-        p Eating Out  
+        p Eating Out
+      p
+        a(href='/planner/days/sat') Change
     div.col-1  
       label(for='sun') Sunday
-      if user.sun
+      if (user.sun.name != null)
         p= user.sun.name 
         a(href=user.sun.WebURL) Go to Recipe!
       else
-        p Eating Out  
+        p Eating Out 
+      p
+        a(href='/planner/days/sun') Change
+    //- div.grocery
+    //-   table
+    //-     thead 
+    //-       tr
+    //-         th Ingrdients
+    //-         th Amount needed
+    //-         th Delete item
+    //-     tbody
+    //-       tr
+    //-         td 
+    //-         td
+    //-         td
     div.save
       p
         a(href='/planner/saved') My Saved recipes
     div.signout
-      a(href='/fake-logout') Sign out    
+      p
+        a(href='/fake-logout') Sign out
+      p
+        a(href='/planner/index') Home   
