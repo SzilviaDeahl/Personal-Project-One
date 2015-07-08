@@ -5,7 +5,7 @@ block content
   div.days
     div.col-1
       label(for='mon') Monday
-      if (user.mon.name != null)
+      if (user.mon && user.mon.name != null)
         p= user.mon.name 
         a(href=user.mon.WebURL) Go to Recipe!
       else
@@ -14,7 +14,7 @@ block content
         a(href='/planner/days/mon') Change
     div.col-1  
       label(for='tues') Tuesday
-      if (user.tues.name != null)
+      if (user.tues && user.tues.name != null)
         p= user.tues.name 
         a(href=user.tues.WebURL) Go to Recipe!
       else
@@ -23,7 +23,7 @@ block content
         a(href='/planner/days/tues') Change
     div.col-1  
       label(for='wedns') Wednesday
-      if (user.wedns.name != null)
+      if (user.wedns && user.wedns.name != null)
         p= user.wedns.name 
         a(href=user.wedns.WebURL) Go to Recipe!
       else
@@ -32,7 +32,7 @@ block content
         a(href='/planner/days/wedns') Change
     div.col-1  
       label(for='thurs') Thursday
-      if (user.thurs.name != null)
+      if (user.thurs && user.thurs.name != null)
         p= user.thurs.name 
         a(href=user.thurs.WebURL) Go to Recipe!
       else
@@ -41,7 +41,7 @@ block content
         a(href='/planner/days/thurs') Change  
     div.col-1  
       label(for='fri') Friday
-      if (user.fri.name != null)
+      if (user.fri && user.fri.name != null)
         p= user.fri.name 
         a(href=user.fri.WebURL) Go to Recipe!
       else
@@ -50,7 +50,7 @@ block content
         a(href='/planner/days/fri') Change
     div.col-1  
       label(for='sat') Saturday
-      if (user.sat.name != null)
+      if (user.sat && user.sat.name != null)
         p= user.sat.name 
         a(href=user.sat.WebURL) Go to Recipe!
       else
@@ -59,7 +59,7 @@ block content
         a(href='/planner/days/sat') Change
     div.col-1  
       label(for='sun') Sunday
-      if (user.sun.name != null)
+      if (user.sun && user.sun.name != null)
         p= user.sun.name 
         a(href=user.sun.WebURL) Go to Recipe!
       else
